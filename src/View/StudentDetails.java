@@ -5,17 +5,17 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class UserDetails extends JPanel {
+public class StudentDetails extends JPanel {
 
     // Table for user data
     private JTable userTable;
     // table column
-    private String[] userTableColumn = {"FIRST NAME", "LAST NAME"};
+    private String[] userTableColumn = {"NAME", "Korean Score", "English Score", "Math Score", "Average Score", "Total Score"};
 
     // back button
     private JButton backButton;
 
-    public UserDetails() {
+    public StudentDetails() {
         // uses box layout
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         // toolbar for buttons
@@ -33,7 +33,7 @@ public class UserDetails extends JPanel {
     }
 
     // gets users from database and loads to table
-    public void getUsers(Object[] objects) {
+    public void getStudents(Object[] objects) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) userTable.getModel();
         defaultTableModel.setColumnIdentifiers(userTableColumn);
         int i = 0;

@@ -5,29 +5,34 @@ import java.util.ArrayList;
 
 public class Database {
 
-    private ArrayList<User> userArrayList;
+    private ArrayList<Student> userArrayList;
 
     public Database() {
         userArrayList = new ArrayList<>();
     }
 
-    // adds user to our collection
-    public void addUser(User user) {
-        userArrayList.add(user);
+    // adds student to our collection
+    public void addStudent(Student student) {
+        userArrayList.add(student);
     }
 
-    // saves user to database file
+    // saves student to database file
     public void saveUser(File file) {
         try {
-            // user model
-            User user;
+            // student model
+            Student student;
             String save_data = "";
 
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
             int i = 0;
             while( i < userArrayList.size()) {
-                user = userArrayList.get(i);
-                save_data = user.getFirstname() + ", " + user.getLastname();
+                student = userArrayList.get(i);
+                save_data = student.getName() + ", "
+                        + student.getKoreanScore() + ", "
+                        + student.getEnglishScore() + ", "
+                        + student.getMathScore() + ", "
+                        + student.getAverageScore() + ", "
+                        + student.getTotalScore();
                 i++;
             }
             bufferedWriter.write(save_data);
@@ -39,8 +44,8 @@ public class Database {
         }
     }
 
-    // reads user from database file
-    public Object[] loadUsers(File file) {
+    // reads student from database file
+    public Object[] loadStudents(File file) {
         Object[] objects;
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
