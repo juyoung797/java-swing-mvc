@@ -45,8 +45,8 @@ src/
 
 ### 📌 예시 화면
 
-![img.png](assets/img.png)
-![img2.png](assets/img2.png)
+![img.png](src/assets/img.png)
+![img2.png](src/assets/img2.png)
 
 ---
 
