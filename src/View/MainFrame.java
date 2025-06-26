@@ -30,8 +30,13 @@ public class MainFrame extends JFrame {
 
         // switch view according to its constraints on click
         form.viewStudents(e -> cardLayout.show(MainFrame.this.getContentPane(), DETAILS_VIEW));
-        studentDetails.backButton(e -> cardLayout.show(MainFrame.this.getContentPane(), FORM_VIEW));
+        studentDetails.addButton(e -> cardLayout.show(MainFrame.this.getContentPane(), FORM_VIEW));
 
+        // MainFrame 생성자 마지막에
+        cardLayout.show(getContentPane(), DETAILS_VIEW); // 학생 목록 화면을 먼저 보여줌
+
+
+        // conf
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/default.png");
         setIconImage(imageIcon.getImage());

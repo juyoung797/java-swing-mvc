@@ -37,13 +37,29 @@ public class StudentController {
             }
             
             this.database.addStudent(new Student(studentName, koreanScore, englishScore, mathScore));
-            this.database.saveUser(new File(databaseFile));
+            this.database.saveStudent(new File(databaseFile));
             this.form.reset(true);
         });
 
-        // load users
+//        // load users
+//        this.form.viewStudents(e -> {
+//            this.studentDetails.getStudents(this.database.loadStudents(new File(databaseFile)));
+//        });
+
+
+
         this.form.viewStudents(e -> {
+            // 데이터 새로 불러오기
+            this.database.loadStudents(new File(databaseFile));
             this.studentDetails.getStudents(this.database.loadStudents(new File(databaseFile)));
+
+            // 삭제 리스너 등록
+            this.studentDetails.onDeleteStudent(row -> {
+                this.database.deleteStudentAt(row); // 메모리에서 삭제
+                this.database.saveAll(new File(databaseFile)); // 파일 덮어쓰기
+                this.studentDetails.getStudents(this.database.loadStudents(new File(databaseFile)));
+            });
         });
+
     }
 }

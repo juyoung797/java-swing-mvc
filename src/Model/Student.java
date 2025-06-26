@@ -17,7 +17,7 @@ public class Student {
         this.koreanScore = koreanScore;
         this.englishScore = englishScore;
         this.mathScore = mathScore;
-        this.averageScore = (double) Math.round(((koreanScore + englishScore + mathScore) / 3 * 100))/100;
+        this.averageScore = Math.round(((double)(koreanScore + englishScore + mathScore) / 3) * 100) / 100.0;
         this.totalScore = koreanScore + englishScore + mathScore;
     }
 

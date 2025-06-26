@@ -17,7 +17,7 @@ public class Database {
     }
 
     // saves student to database file
-    public void saveUser(File file) {
+    public void saveStudent(File file) {
         try {
             // student model
             Student student;
@@ -59,5 +59,25 @@ public class Database {
         return null;
     }
 
+
+    public void deleteStudentAt(int index) {
+        if (index >= 0 && index < userArrayList.size()) {
+            userArrayList.remove(index);
+        }
+    }
+
+    // 전체 데이터 저장 (덮어쓰기)
+    public void saveAll(File file) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+            for (Student student : userArrayList) {
+                String line = student.getName() + ", " + student.getKoreanScore()
+                        + ", " + student.getEnglishScore() + ", " + student.getMathScore();
+                bw.write(line);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
